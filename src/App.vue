@@ -2,16 +2,19 @@
   <div :id="$style.app">
     <h1>{{ title }}</h1>
     <Button @click="increment" outlined>Click me</Button>
+    <DirectivesTest />
   </div>
 </template>
 
 <script>
 import Button from './components/Button';
+import DirectivesTest from './components/DirectivesTest';
 
 export default {
   name: 'App',
   components: {
-    Button
+    Button,
+    DirectivesTest
   },
   data() {
     return {
