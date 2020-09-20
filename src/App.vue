@@ -1,17 +1,17 @@
 <template>
   <div :id="$style.app">
     <h1>{{ title }}</h1>
-    <Button @click="increment" outlined>Click me</Button>
+    <StarRating :rating="4.5" />
   </div>
 </template>
 
 <script>
-import Button from './components/Button';
+import StarRating from './components/StarRating';
 
 export default {
   name: 'App',
   components: {
-    Button
+    StarRating
   },
   data() {
     return {
