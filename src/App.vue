@@ -1,39 +1,46 @@
 <template>
   <div :id="$style.app">
-    <h1>{{ title }}</h1>
-    <StarRating :rating="4.5" />
+    <ApartmentsItem
+      :descr="apartment.descr"
+      :price="apartment.price"
+      :rating="apartment.rating"
+      imgSrc="https://cdn-7.nikon-cdn.com/Images/Learn-Explore/Photography-Techniques/2019/CA-Chris-Ogonek-Picture-Controls/Media/Chris-Ogonek-Picture-Controls-Vivid.jpg"
+    />
   </div>
 </template>
 
 <script>
-import StarRating from './components/StarRating';
-
+import ApartmentsItem from './components/apartment/ApartmentsItem'
 export default {
   name: 'App',
   components: {
-    StarRating
+    ApartmentsItem,
   },
   data() {
     return {
-      amountOfClicks: 0
+      apartment: {
+        id: '5f05c9dad2c9bc0f773444bc',
+        title: 'Aut qui adipisci distinctio maiores molestiae sit est inventore vero.',
+        descr: 'Non perferendis rerum a in nisi exercitationem dolorum perferendis. Eligendi sit error sed a. Facere maiores sit adipisci sequi eveniet. Qui est voluptatum maiores eos qui vitae.',
+        price: 2032,
+        rating: 4.7,
+        location: {
+          city: 'Kherson',
+        },
+        owner: {
+          name: 'Ellen',
+          phone: '115-355-5652',
+          email: 'Tracey.Morar86@hotmail.com',
+        },
+      },
     }
   },
-  computed: {
-    title() {
-      return `Amount of clicks ${this.amountOfClicks}`
-    }
-  },
-  methods: {
-    increment() {
-      this.amountOfClicks += 1
-    }
-  }
 }
 </script>
 
 <style module>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
