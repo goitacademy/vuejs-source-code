@@ -48,7 +48,7 @@ export default {
 .apartments-item {
   position: relative;
   max-width: 350px;
-  padding: 0 20px;
+  padding: 0 15px;
 
   &__inner {
     position: relative;
@@ -74,6 +74,8 @@ export default {
 
   &__description {
     margin-bottom: 20px;
+    max-height: calc(1em * 1.4 * 3);
+    overflow: hidden;
   }
 
   &__rating {
