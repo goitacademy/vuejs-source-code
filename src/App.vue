@@ -1,36 +1,33 @@
 <template>
   <div :id="$style.app">
-    <ApartmentsList :items="apartments" />
+    <ApartmentsList :items="apartments">
+      <template v-slot:apartment="{ apartment }">
+        <ApartmentsItem
+          :key="apartment.id"
+          :descr="apartment.descr"
+          :rating="apartment.rating"
+          :imgSrc="apartment.imgUrl"
+          :price="apartment.price"
+        />
+      </template>
+    </ApartmentsList>
   </div>
 </template>
 
 <script>
 import ApartmentsList from './components/apartment/ApartmentsList'
+import ApartmentsItem from './components/apartment/ApartmentsItem'
 import apartments from './components/apartment/apartments'
 
 export default {
   name: 'App',
   components: {
     ApartmentsList,
+    ApartmentsItem
   },
   data() {
     return {
-      apartments,
-      apartment: {
-        id: '5f05c9dad2c9bc0f773444bc',
-        title: 'Aut qui adipisci distinctio maiores molestiae sit est inventore vero.',
-        descr: 'Non perferendis rerum a in nisi exercitationem dolorum perferendis. Eligendi sit error sed a. Facere maiores sit adipisci sequi eveniet. Qui est voluptatum maiores eos qui vitae.',
-        price: 2032,
-        rating: 4.7,
-        location: {
-          city: 'Kherson',
-        },
-        owner: {
-          name: 'Ellen',
-          phone: '115-355-5652',
-          email: 'Tracey.Morar86@hotmail.com',
-        },
-      },
+      apartments
     }
   },
 }
