@@ -1,5 +1,10 @@
 <template>
   <div :id="$style.app">
+    <h2>{{ text }}</h2>
+    <div class="actions">
+      <CustomSelect :items="['name', 'label', 'salary']" />
+      <CustomInput v-model="text" />
+    </div>
     <ApartmentsList :items="apartments">
       <template v-slot:apartment="{ apartment }">
         <ApartmentsItem
@@ -18,16 +23,21 @@
 <script>
 import ApartmentsList from './components/apartment/ApartmentsList'
 import ApartmentsItem from './components/apartment/ApartmentsItem'
+import CustomInput from './components/shared/CustomInput'
+import CustomSelect from './components/shared/CustomSelect'
 import apartments from './components/apartment/apartments'
 
 export default {
   name: 'App',
   components: {
     ApartmentsList,
-    ApartmentsItem
+    ApartmentsItem,
+    CustomInput,
+    CustomSelect
   },
   data() {
     return {
+      text: '',
       apartments
     }
   },
@@ -47,5 +57,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.actions {
+  display: flex;
 }
 </style>
