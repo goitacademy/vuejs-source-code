@@ -4,6 +4,7 @@
       v-for="item in formatedItems"
       :key="item.value"
       :value="item.value"
+      :selected="item.selected"
     >{{ item.label }}</option>
   </select>
 </template>
@@ -40,6 +41,8 @@
 
 .custom-select {
   height: 40px;
+  max-width: 220px;
+  width: 100%;
   border: 2px solid $main-color;
   font-size: 18px;
   outline: none;
