@@ -57,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 .apartments-item {
   position: relative;
-  max-width: 350px;
+  width: 33.333%;
   padding: 0 15px;
   margin-bottom: 30px;
 
