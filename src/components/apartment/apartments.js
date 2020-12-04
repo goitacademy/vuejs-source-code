@@ -11,7 +11,7 @@ export default [
       city: 'Dnipro',
     },
     owner: {
-      name: 'Bobbie',
+      name: 'Bobbi',
       phone: '582-740-2926',
       email: 'Pete_Carter53@hotmail.com',
     },
