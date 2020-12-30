@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import Container from '../components/shared/Container'
-import apartments from '../components/apartment/apartments'
-import ApartmentsMainInfo from '../components/apartment/ApartmentsMainInfo'
-import ApartmentsOwner from '../components/apartment/AprtmentsOwner'
-import Reviews from '../components/reviews'
-import reviewsList from '../components/reviews/reviews.json'
+import Container from '../components/shared/Container';
+import apartments from '../components/apartment/apartments';
+import ApartmentsMainInfo from '../components/apartment/ApartmentsMainInfo';
+import ApartmentsOwner from '../components/apartment/AprtmentsOwner';
+import Reviews from '../components/reviews';
+import reviewsList from '../components/reviews/reviews.json';
 
 export default {
   name: 'ApartmentPage',
@@ -33,18 +33,33 @@ export default {
   },
   computed: {
     reviewsList() {
-      return reviewsList
+      return reviewsList;
     },
     apartment() {
       return apartments.find(
         (apartment) => apartment.id === this.$route.params.id
-      )
+      );
     },
   },
-  mounted() {
-    console.log(this.apartment)
+  beforeCreate() {
+    console.log(this.reviewsList, '---beforeCreate');
   },
-}
+  created() {
+    console.log(this.reviewsList, '---created');
+  },
+  beforeMount() {
+    console.log(this.$el, '----beforeMount');
+  },
+  mounted() {
+    console.log(this.$el, '----mount');
+  },
+  beforeDestroy() {
+    console.log(this.$el, '----beforeDestroy');
+  },
+  destroyed() {
+    console.log(this.$el, '----destroyed');
+  },
+};
 </script>
 
 <style lang="scss" scoped>

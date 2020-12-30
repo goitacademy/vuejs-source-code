@@ -1,22 +1,24 @@
 <template>
   <header class="header">
     <Container>
-      <Logo />
+      <router-link to="/">
+        <Logo />
+      </router-link>
     </Container>
   </header>
 </template>
 
 <script>
-import Container from './shared/Container'
-import Logo from './Logo'
+import Container from './shared/Container';
+import Logo from './Logo';
 
 export default {
   name: 'Header',
   components: {
     Container,
-    Logo
-  }
-}
+    Logo,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
