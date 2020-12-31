@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import ApartmentsList from '../components/apartment/ApartmentsList'
-import ApartmentsItem from '../components/apartment/ApartmentsItem'
-import apartments from '../components/apartment/apartments'
-import ApartmentsFilterForm from '../components/apartment/ApartmentsFilterForm'
-import Container from '../components/shared/Container'
+import ApartmentsList from '../components/apartment/ApartmentsList';
+import ApartmentsItem from '../components/apartment/ApartmentsItem';
+import ApartmentsFilterForm from '../components/apartment/ApartmentsFilterForm';
+import Container from '../components/shared/Container';
+import { getApartmentsList } from '../services/apartments.service';
 
 export default {
   name: 'App',
@@ -39,39 +39,47 @@ export default {
   data() {
     return {
       text: '',
-      apartments,
+      apartments: [],
       filters: {
         city: '',
         price: 0,
       },
-    }
+    };
   },
   computed: {
     filteredApartments() {
-      return this.filterByCityName(this.filterByPrice(this.apartments))
+      return this.filterByCityName(this.filterByPrice(this.apartments));
     },
+  },
+  async created() {
+    try {
+      const { data } = await getApartmentsList();
+      this.apartments = data;
+    } catch (error) {
+      console.error(error);
+    }
   },
   methods: {
     filter({ city, price }) {
-      this.filters.city = city
-      this.filters.price = price
+      this.filters.city = city;
+      this.filters.price = price;
     },
     filterByCityName(apartments) {
-      if (!this.filters.city) return apartments
+      if (!this.filters.city) return apartments;
 
       return apartments.filter((apartment) => {
-        return apartment.location.city === this.filters.city
-      })
+        return apartment.location.city === this.filters.city;
+      });
     },
     filterByPrice(apartments) {
-      if (!this.filters.price) return apartments
+      if (!this.filters.price) return apartments;
 
       return apartments.filter((apartment) => {
-        return apartment.price >= this.filters.price
-      })
+        return apartment.price >= this.filters.price;
+      });
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
