@@ -19,6 +19,7 @@ export default {
       error: '',
     };
   },
+  inject: ['form'],
   inheritAttrs: false,
   props: {
     value: {
@@ -43,10 +44,19 @@ export default {
     },
   },
   watch: {
-    value(value) {
-      this.validate(value);
-      console.log(value);
+    value() {
+      this.validate();
     },
+  },
+  mounted() {
+    if (!this.form) return;
+
+    this.form.registerInput(this);
+  },
+  beforeDestroy() {
+    if (!this.form) return;
+
+    this.form.unRegisterInput(this);
   },
   methods: {
     validate() {
@@ -59,6 +69,11 @@ export default {
 
         return hasPassed;
       });
+
+      return this.isValid;
+    },
+    reset() {
+      this.$emit('input', '');
     },
   },
 };

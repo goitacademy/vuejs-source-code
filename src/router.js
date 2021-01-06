@@ -1,9 +1,10 @@
-import Foo from './pages/Foo'
-import Bar from './pages/Bar'
-import VueRouter from 'vue-router'
-import Homepage from './pages/Homepage'
-import Apartment from './pages/Apartment'
-import ErrorPage from './pages/ErrorPage'
+import Foo from './pages/Foo';
+import Bar from './pages/Bar';
+import VueRouter from 'vue-router';
+import Homepage from './pages/Homepage';
+import Apartment from './pages/Apartment';
+import ErrorPage from './pages/ErrorPage';
+import LoginPage from './pages/Login';
 
 const routes = [
   {
@@ -25,15 +26,20 @@ const routes = [
     name: 'apartment',
   },
   {
+    path: '/login',
+    component: LoginPage,
+    name: 'login-page',
+  },
+  {
     path: '*',
     component: ErrorPage,
     name: 'error-page',
   },
-]
+];
 
 const router = new VueRouter({
   routes,
   mode: 'history',
-})
+});
 
-export default router
+export default router;
