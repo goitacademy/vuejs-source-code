@@ -9,16 +9,16 @@
 </template>
 
 <script>
-import AppFooter from './components/Footer'
-import AppHeader from './components/Header'
+import AppFooter from './components/Footer';
+import AppHeader from './components/Header';
 
 export default {
   name: 'App',
   components: {
     AppFooter,
     AppHeader,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -33,6 +33,5 @@ export default {
 
 .content {
   flex-grow: 1;
-  padding-top: 120px;
 }
 </style>

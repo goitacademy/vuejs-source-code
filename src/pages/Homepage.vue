@@ -1,23 +1,25 @@
 <template>
   <main class="homepage">
-    <Container>
-      <ApartmentsFilterForm class="apartments-filter" @submit="filter" />
-    </Container>
-    <Container>
-      <p v-if="!filteredApartments.length">Ничего не найдено</p>
-      <ApartmentsList v-else :items="filteredApartments">
-        <template v-slot:apartment="{ apartment }">
-          <ApartmentsItem
-            :key="apartment.id"
-            :id="apartment.id"
-            :descr="apartment.descr"
-            :rating="apartment.rating"
-            :imgSrc="apartment.imgUrl"
-            :price="apartment.price"
-          />
-        </template>
-      </ApartmentsList>
-    </Container>
+    <SectionWithHeaderSpacer>
+      <Container>
+        <ApartmentsFilterForm class="apartments-filter" @submit="filter" />
+      </Container>
+      <Container>
+        <p v-if="!filteredApartments.length">Ничего не найдено</p>
+        <ApartmentsList v-else :items="filteredApartments">
+          <template v-slot:apartment="{ apartment }">
+            <ApartmentsItem
+              :key="apartment.id"
+              :id="apartment.id"
+              :descr="apartment.descr"
+              :rating="apartment.rating"
+              :imgSrc="apartment.imgUrl"
+              :price="apartment.price"
+            />
+          </template>
+        </ApartmentsList>
+      </Container>
+    </SectionWithHeaderSpacer>
   </main>
 </template>
 
@@ -27,6 +29,7 @@ import ApartmentsItem from '../components/apartment/ApartmentsItem';
 import ApartmentsFilterForm from '../components/apartment/ApartmentsFilterForm';
 import Container from '../components/shared/Container';
 import { getApartmentsList } from '../services/apartments.service';
+import SectionWithHeaderSpacer from '../components/shared/SectionWithHeaderSpacer';
 
 export default {
   name: 'App',
@@ -35,6 +38,7 @@ export default {
     ApartmentsItem,
     ApartmentsFilterForm,
     Container,
+    SectionWithHeaderSpacer,
   },
   data() {
     return {
