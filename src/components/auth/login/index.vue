@@ -19,7 +19,7 @@
         :rules="passwordRules"
         class="login__input"
       />
-      <Button class="login__btn" type="bsubmit">Вход</Button>
+      <Button class="login__btn" type="submit">Вход</Button>
     </Form>
   </AuthContainer>
 </template>
@@ -48,6 +48,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       formData: {
         email: '',
         password: '',
@@ -75,10 +76,13 @@ export default {
 
       if (isFormValid) {
         try {
+          this.loading = true;
           const { data } = await loginUser(this.formData);
           console.log(data);
         } catch (error) {
           console.log(error);
+        } finally {
+          this.loading = false;
         }
       }
     },

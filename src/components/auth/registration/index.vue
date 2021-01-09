@@ -36,7 +36,9 @@
         :rules="confirmPassword"
         class="registration__input"
       />
-      <Button class="registration__btn" type="bsubmit">Вход</Button>
+      <Button class="registration__btn" type="submit" :loading="loading"
+        >Вход</Button
+      >
     </Form>
   </AuthContainer>
 </template>
@@ -65,6 +67,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       formData: {
         name: '',
         email: '',
@@ -107,11 +110,14 @@ export default {
 
       if (isFormValid) {
         try {
+          this.loading = true;
           const { data } = await registerUser({ name, password, email });
           console.log(data);
           form.reset();
         } catch (error) {
           console.log(error);
+        } finally {
+          this.loading = false;
         }
       }
     },
