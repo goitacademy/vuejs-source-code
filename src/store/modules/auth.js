@@ -24,7 +24,7 @@ export default {
       commit('setUserData', user);
       commit('setToken', token);
     },
-    async registration({ commit }, payload) {
+    async registerUser({ commit }, payload) {
       const { data } = await registerUser(payload);
       const { user, token } = data;
 
