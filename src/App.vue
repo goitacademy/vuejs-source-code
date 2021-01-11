@@ -11,9 +11,8 @@
 
 <script>
 import AppFooter from './components/Footer';
-import AppHeader from './components/Header';
+import AppHeader from './components/header';
 import Notifications from './components/notifications';
-import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
@@ -21,12 +20,6 @@ export default {
     AppFooter,
     AppHeader,
     Notifications,
-  },
-  computed: {
-    ...mapGetters('auth', ['isLoggedIn']),
-  },
-  mounted() {
-    console.log(this.isLoggedIn);
   },
 };
 </script>
