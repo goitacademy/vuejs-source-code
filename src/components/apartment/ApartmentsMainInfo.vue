@@ -7,7 +7,9 @@
     <img :src="apartment.imgUrl" alt="" class="apartment-main-info__photo" />
     <p class="apartment-main-info__description">{{ apartment.descr }}</p>
     <div class="apartment-main-info__btn">
-      <Button @click="handleApartmentsBooking">Забронировать</Button>
+      <Button @click="handleApartmentsBooking" :loading="isLoading">
+        Забронировать
+      </Button>
     </div>
   </article>
 </template>
@@ -15,7 +17,7 @@
 <script>
 import Rating from '../StarRating';
 import Button from '../shared/Button';
-import { bookApartment } from '../../services/orders.services';
+import { bookApartment } from '../../services/order.service';
 
 export default {
   name: 'ApartmentsMainInfo',
@@ -29,13 +31,20 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   methods: {
     async handleApartmentsBooking() {
       const body = {
         apartmentId: this.$route.params.id,
+        date: Date.now(),
       };
 
       try {
+        this.isLoading = true;
         await bookApartment(body);
 
         this.$notify({
@@ -48,6 +57,8 @@ export default {
           title: 'Произошла ошибка',
           text: error.message,
         });
+      } finally {
+        this.isLoading = false;
       }
     },
   },
