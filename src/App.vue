@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Notifications />
     <div class="content">
       <AppHeader />
       <router-view></router-view>
@@ -9,16 +10,18 @@
 </template>
 
 <script>
-import AppFooter from './components/Footer'
-import AppHeader from './components/Header'
+import AppFooter from './components/Footer';
+import AppHeader from './components/header';
+import Notifications from './components/notifications';
 
 export default {
   name: 'App',
   components: {
     AppFooter,
     AppHeader,
-  }
-}
+    Notifications,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -33,6 +36,5 @@ export default {
 
 .content {
   flex-grow: 1;
-  padding-top: 120px;
 }
 </style>
